@@ -33,7 +33,7 @@ public class SocksWarehouseServiceImpl implements SocksWarehouseService {
     }
 
     @Override
-    public Long getSocksQuantityByParams(@Valid WarehouseDTO dto) throws SocksCustomException {
+    public Long getSocksQuantityByParams(WarehouseDTO dto) throws SocksCustomException {
         return socksWarehouseRepository.getSocksQuantityByParams(dto.getColor(), dto.getOperation(), dto.getCottonPart());
     }
 }
