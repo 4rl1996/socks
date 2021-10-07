@@ -1,9 +1,6 @@
 package ru.task.socks.model.dto;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 public class WarehouseDTO {
 
@@ -14,14 +11,15 @@ public class WarehouseDTO {
     private String operation;
 
     @NotNull
+    @Digits(integer = 3, fraction = 0)
     @Min(value = 0)
     @Max(value = 100)
-    private Integer cottonPart;
+    private Float cottonPart;
 
     public WarehouseDTO() {
     }
 
-    public WarehouseDTO(String color, String operation, Integer cottonPart) {
+    public WarehouseDTO(String color, String operation, Float cottonPart) {
         this.color = color;
         this.operation = operation;
         this.cottonPart = cottonPart;
@@ -35,7 +33,7 @@ public class WarehouseDTO {
         return operation;
     }
 
-    public Integer getCottonPart() {
+    public Float getCottonPart() {
         return cottonPart;
     }
 
@@ -47,7 +45,7 @@ public class WarehouseDTO {
         this.operation = operation;
     }
 
-    public void setCottonPart(Integer cottonPart) {
+    public void setCottonPart(Float cottonPart) {
         this.cottonPart = cottonPart;
     }
 }
