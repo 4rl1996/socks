@@ -2,6 +2,7 @@ package ru.task.socks.repository.impl;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import ru.task.socks.exception.SocksCustomException;
 import ru.task.socks.model.entity.SocksEntity;
 import ru.task.socks.repository.SocksWarehouseRepository;
 
@@ -35,7 +36,7 @@ public class SocksWarehouseRepositoryImpl implements SocksWarehouseRepository {
     }
 
     @Override
-    public Long getSocksQuantityByParams(String color, String operation, Integer cottonPart) {
+    public Long getSocksQuantityByParams(String color, String operation, Integer cottonPart) throws SocksCustomException{
         switch (operation) {
             case "moreThan":
                 return jdbcTemplate.queryForObject("select sum(quantity) from socks " +
@@ -56,7 +57,7 @@ public class SocksWarehouseRepositoryImpl implements SocksWarehouseRepository {
                         color,
                         cottonPart);
             default:
-                return 0L;
+                throw new SocksCustomException();
         }
     }
 }

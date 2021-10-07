@@ -1,13 +1,21 @@
 package ru.task.socks.model.dto;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+
 public class SocksDTO {
 
     private Long id;
 
+    @NotBlank
     private String color;
 
+    @Min(0)
+    @Max(100)
     private Integer cottonPart;
 
+    @Min(1)
     private Long quantity;
 
     public SocksDTO() {

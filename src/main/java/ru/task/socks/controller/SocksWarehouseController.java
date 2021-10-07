@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import ru.task.socks.exceptionHandler.SocksCustomException;
+import ru.task.socks.exception.SocksCustomException;
 import ru.task.socks.model.dto.SocksDTO;
 import ru.task.socks.service.SocksWarehouseService;
 
@@ -22,13 +22,13 @@ public class SocksWarehouseController {
     @PostMapping(path = "/income")
     public ResponseEntity<?> socksIncome(@RequestBody SocksDTO socks) throws SocksCustomException {
         socksWarehouseService.socksIncome(socks);
-        return ResponseEntity.status(HttpStatus.OK).body(null);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @PostMapping(path = "/outcome")
     public ResponseEntity<?> socksOutcome(@RequestBody SocksDTO socks) throws SocksCustomException {
         socksWarehouseService.socksOutcome(socks);
-        return ResponseEntity.status(HttpStatus.OK).body(null);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @GetMapping()

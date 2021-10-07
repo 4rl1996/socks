@@ -1,6 +1,6 @@
 package ru.task.socks.service;
 
-import ru.task.socks.exceptionHandler.SocksCustomException;
+import ru.task.socks.exception.SocksCustomException;
 import ru.task.socks.model.dto.SocksDTO;
 
 public interface SocksWarehouseService {

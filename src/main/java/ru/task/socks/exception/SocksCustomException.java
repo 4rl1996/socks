@@ -1,4 +1,4 @@
-package ru.task.socks.exceptionHandler;
+package ru.task.socks.exception;
 
 public class SocksCustomException extends Exception {
 
