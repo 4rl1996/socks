@@ -6,14 +6,14 @@ public class SocksEntity {
 
     private String color;
 
-    private Integer cottonPart;
+    private Float cottonPart;
 
-    private Long quantity;
+    private Float quantity;
 
     public SocksEntity() {
     }
 
-    public SocksEntity(Long id, String color, Integer cottonPart, Long quantity) {
+    public SocksEntity(Long id, String color, Float cottonPart, Float quantity) {
         this.id = id;
         this.color = color;
         this.cottonPart = cottonPart;
@@ -28,19 +28,19 @@ public class SocksEntity {
         this.color = color;
     }
 
-    public Integer getCottonPart() {
+    public Float getCottonPart() {
         return cottonPart;
     }
 
-    public void setCottonPart(Integer cottonPart) {
+    public void setCottonPart(Float cottonPart) {
         this.cottonPart = cottonPart;
     }
 
-    public Long getQuantity() {
+    public Float getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Long quantity) {
+    public void setQuantity(Float quantity) {
         this.quantity = quantity;
     }
 

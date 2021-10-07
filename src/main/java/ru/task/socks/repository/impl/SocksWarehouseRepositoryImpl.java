@@ -39,7 +39,7 @@ public class SocksWarehouseRepositoryImpl implements SocksWarehouseRepository {
     }
 
     @Override
-    public Long getSocksQuantityByParams(String color, String operation, Integer cottonPart) throws SocksCustomException {
+    public Long getSocksQuantityByParams(String color, String operation, Float cottonPart) throws SocksCustomException {
         switch (operation) {
             case "moreThan":
                 return jdbcTemplate.queryForObject("select sum(quantity) from socks " +

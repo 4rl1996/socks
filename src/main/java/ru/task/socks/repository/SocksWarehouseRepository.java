@@ -9,5 +9,5 @@ public interface SocksWarehouseRepository {
 
     void socksOutcome(SocksEntity socks) throws SocksCustomException;
 
-    Long getSocksQuantityByParams(String color, String operation, Integer cotonPart) throws SocksCustomException;
+    Long getSocksQuantityByParams(String color, String operation, Float cotonPart) throws SocksCustomException;
 }
