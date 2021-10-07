@@ -7,7 +7,7 @@ public interface SocksWarehouseRepository {
 
     void socksIncome(SocksEntity socks);
 
-    void socksOutcome(SocksEntity socks);
+    void socksOutcome(SocksEntity socks) throws SocksCustomException;
 
     Long getSocksQuantityByParams(String color, String operation, Integer cotonPart) throws SocksCustomException;
 }

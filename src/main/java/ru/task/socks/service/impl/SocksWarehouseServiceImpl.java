@@ -3,9 +3,12 @@ package ru.task.socks.service.impl;
 import org.springframework.stereotype.Service;
 import ru.task.socks.exception.SocksCustomException;
 import ru.task.socks.model.dto.SocksDTO;
+import ru.task.socks.model.dto.WarehouseDTO;
 import ru.task.socks.repository.SocksWarehouseRepository;
 import ru.task.socks.service.SocksWarehouseService;
 import ru.task.socks.service.mapper.SocksMapper;
+
+import javax.validation.Valid;
 
 @Service
 public class SocksWarehouseServiceImpl implements SocksWarehouseService {
@@ -25,13 +28,13 @@ public class SocksWarehouseServiceImpl implements SocksWarehouseService {
     }
 
     @Override
-    public void socksOutcome(SocksDTO socksDTO){
+    public void socksOutcome(SocksDTO socksDTO) throws SocksCustomException {
         socksWarehouseRepository.socksOutcome(socksMapper.dtoToEntity(socksDTO));
     }
 
     @Override
-    public Long getSocksQuantityByParams(String color, String operation, Integer cotonPart) throws SocksCustomException {
-        return socksWarehouseRepository.getSocksQuantityByParams(color, operation, cotonPart);
+    public Long getSocksQuantityByParams(@Valid WarehouseDTO dto) throws SocksCustomException {
+        return socksWarehouseRepository.getSocksQuantityByParams(dto.getColor(), dto.getOperation(), dto.getCottonPart());
     }
 }
 

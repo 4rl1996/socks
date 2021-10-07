@@ -11,11 +11,11 @@ public class SocksDTO {
     @NotBlank
     private String color;
 
-    @Min(0)
-    @Max(100)
+    @Min(value = 0)
+    @Max(value = 100)
     private Integer cottonPart;
 
-    @Min(1)
+    @Min(value = 1L)
     private Long quantity;
 
     public SocksDTO() {

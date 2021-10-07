@@ -9,7 +9,7 @@ import ru.task.socks.repository.SocksWarehouseRepository;
 @Repository
 public class SocksWarehouseRepositoryImpl implements SocksWarehouseRepository {
 
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     public SocksWarehouseRepositoryImpl(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -28,15 +28,18 @@ public class SocksWarehouseRepositoryImpl implements SocksWarehouseRepository {
     }
 
     @Override
-    public void socksOutcome(SocksEntity socks) {
-        jdbcTemplate.update("update socks set quantity = socks.quantity - ? where (color = ? and cotton_part = ?)",
+    public void socksOutcome(SocksEntity socks) throws SocksCustomException {
+        int update = jdbcTemplate.update("update socks set quantity = socks.quantity - ? where (color = ? and cotton_part = ?)",
                 socks.getQuantity(),
                 socks.getColor(),
                 socks.getCottonPart());
+        if (update == 0) {
+            throw new SocksCustomException();
+        }
     }
 
     @Override
-    public Long getSocksQuantityByParams(String color, String operation, Integer cottonPart) throws SocksCustomException{
+    public Long getSocksQuantityByParams(String color, String operation, Integer cottonPart) throws SocksCustomException {
         switch (operation) {
             case "moreThan":
                 return jdbcTemplate.queryForObject("select sum(quantity) from socks " +
