@@ -38,7 +38,7 @@ public class SocksWarehouseController {
     }
 
     @GetMapping()
-    public ResponseEntity<?> param(@Valid WarehouseDTO warehouseDTO) throws SocksCustomException {
+    public ResponseEntity<?> param(WarehouseDTO warehouseDTO) throws SocksCustomException {
         Long quantity = socksWarehouseService.getSocksQuantityByParams(warehouseDTO);
         if (quantity == null) {
             return ResponseEntity.status(HttpStatus.OK).body("0");
